@@ -1,5 +1,6 @@
-from nowledge_iface import __version__
+from nowledge_iface.extractor import ContentIndexing, INDEXING_TYPES
 
 
-def test_version():
-    assert __version__ == '0.1.0'
+def test_all_indexing_kinds_has_type_defined():
+    for indexing in ContentIndexing:
+        assert indexing in INDEXING_TYPES.keys(), f"Indexing type {indexing} has no type associated"
