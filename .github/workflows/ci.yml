@@ -15,16 +15,19 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
+      - name: Install and configure Poetry
         uses: snok/install-poetry@v1.1.2
         with:
-          virtualenvs-path: {cache-dir}/virtualenvs
+          version: 1.1.5
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+          virtualenvs-path: /tmp/virtualenvs
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Cache Poetry virtualenvs
         uses: actions/cache@v2
         with:
-          path: {cache-dir}/virtualenvs
+          path: /tmp/virtualenvs
           key: ${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
       - name: Install from source
         run: make install
