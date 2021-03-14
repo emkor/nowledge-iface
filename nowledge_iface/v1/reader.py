@@ -5,7 +5,7 @@ from enum import Enum
 
 from nowledge_iface.v1.plugin import NowledgePlugin, PluginKind
 
-EXTRACTORS_KEY = "nowledge.extractor"
+EXTRACTORS_KEY = "nowledge.plugin"
 
 
 class NowledgeTextReaderPlugin(NowledgePlugin, ABC):
