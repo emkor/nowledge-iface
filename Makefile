@@ -1,13 +1,18 @@
+install: config
+test: unit_test
+build: dist
+all: test build
+
 config:
 	poetry install --no-interaction
 
-test:
+unit_test:
 	pytest -vv test/
 
-build: $(shell find nowledge_iface -type f)
+dist: $(shell find nowledge_iface -type f)
 	poetry build
 
 clean:
 	rm -rf dist .pytest_cache
 
-.PHONY: config test clean
+.PHONY: config unit_test dist
