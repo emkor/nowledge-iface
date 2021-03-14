@@ -4,13 +4,12 @@ build: dist
 all: test build
 
 POETRY = poetry
-PYTEST = pytest
 
 config:
 	$(POETRY) install --no-interaction
 
 unit_test:
-	$(PYTEST) -vv test/
+	$(POETRY) run pytest -vv test/
 
 dist: $(shell find nowledge_iface -type f)
 	$(POETRY) build
