@@ -17,8 +17,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Poetry
         uses: snok/install-poetry@v1.1.2
+        with:
+          virtualenvs-path: {cache-dir}/virtualenvs
       - name: Checkout code
         uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: {cache-dir}/virtualenvs
+          key: ${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
       - name: Install from source
         run: make install
       - name: Run tests
