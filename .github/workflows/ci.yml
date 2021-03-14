@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Poetry
-        run: pip install --user poetry && source ~/.profile && poetry --version
+        uses: snok/install-poetry@v1.1.2
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install from source

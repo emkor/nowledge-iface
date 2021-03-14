@@ -3,14 +3,17 @@ test: unit_test
 build: dist
 all: test build
 
+POETRY = poetry
+PYTEST = pytest
+
 config:
-	poetry install --no-interaction
+	$(POETRY) install --no-interaction
 
 unit_test:
-	pytest -vv test/
+	$(PYTEST) -vv test/
 
 dist: $(shell find nowledge_iface -type f)
-	poetry build
+	$(POETRY) build
 
 clean:
 	rm -rf dist .pytest_cache
