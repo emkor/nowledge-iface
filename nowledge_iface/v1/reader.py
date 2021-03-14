@@ -8,7 +8,7 @@ from nowledge_iface.v1.plugin import NowledgePlugin, PluginKind
 EXTRACTORS_KEY = "nowledge.extractor"
 
 
-class NowledgeTextReaderPlugin(ABC, NowledgePlugin):
+class NowledgeTextReaderPlugin(NowledgePlugin, ABC):
     @classmethod
     def kind(cls) -> PluginKind:
         return PluginKind.READER
